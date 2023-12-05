@@ -1,11 +1,3 @@
-import { addBook } from './assets/script/addBook.js'
+import {createNewBook} from './assets/script/createNewBook.js'
 
-addBook('test', 'test', '10')
-
-const addBookButton = document.getElementsByClassName('main-button')[0]
-
-function createNewBook() {
-  console.log('test')
-}
-
-addBookButton.addEventListener('click',createNewBook)
+document.getElementsByClassName('main-button')[0].addEventListener('click', createNewBook)
