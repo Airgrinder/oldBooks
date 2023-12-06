@@ -17,15 +17,21 @@
 }
 
 .main-sidemenu {
+  margin-bottom: 10px;
   width: 100%;
   display: flex;
+  overflow: auto;
   flex-direction: column;
   align-items: center;
 }
 
+.main-sidemenu::-webkit-scrollbar {
+  width: 0;
+}
+
 .main-sidemenu-item {
   margin: 10px 10px 0;
-  height: 240px;
+  min-height: 240px;
   width: calc(100% - 22px);
   border: 1px #000000 solid;
   border-radius: 50px;
@@ -69,7 +75,7 @@
 .main-button {
   margin: auto 0 10px;
   font-size: 24px;
-  height: 40px;
+  min-height: 40px;
   width: 400px;
   letter-spacing: 2px;
 }
