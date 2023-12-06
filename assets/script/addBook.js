@@ -1,3 +1,5 @@
+import {openBook} from "./openBook.js";
+
 const bookList = document.getElementsByClassName("main-sidemenu")[0]
 
 export function addBook(name, subtitle, rating) {
@@ -13,6 +15,10 @@ export function addBook(name, subtitle, rating) {
       <button class="main-sidemenu-item-button button">Открыть</button>
     </div>
   `
+
+  newBook.addEventListener('click', (event) => {
+    openBook(event);
+  });
 
   bookList.appendChild(newBook)
 }

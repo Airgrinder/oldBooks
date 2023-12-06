@@ -101,3 +101,17 @@
 .main-content-subtitle {
   font-size: 24px;
 }
+
+.main-content-chooseName input {
+  margin-bottom: 20px;
+  width: 380px;
+  height: 40px;
+  font-size: 26px;
+}
+
+.main-content-enderSubtitle textarea {
+  margin-top: 20px;
+  width: 380px;
+  font-size: 20px;
+
+}
