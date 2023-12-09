@@ -1,8 +1,9 @@
-import {openBook} from "./openBook.js";
+import {openBook} from "./openBook.js"
 
-const bookList = document.getElementsByClassName("main-sidemenu")[0]
+
 
 export function addBook(name, subtitle, rating) {
+  const bookList = document.getElementsByClassName("main-sidemenu")[0]
   const newBook = document.createElement('div')
   newBook.className = 'main-sidemenu-item'
 
@@ -17,8 +18,8 @@ export function addBook(name, subtitle, rating) {
   `
 
   newBook.addEventListener('click', (event) => {
-    openBook(event);
-  });
+    openBook(event)
+  })
 
   bookList.appendChild(newBook)
 }
