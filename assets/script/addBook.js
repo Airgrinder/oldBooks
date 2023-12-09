@@ -1,7 +1,6 @@
 import {openBook} from "./openBook.js"
 
 
-
 export function addBook(name, subtitle, rating) {
   const bookList = document.getElementsByClassName("main-sidemenu")[0]
   const newBook = document.createElement('div')

@@ -1,26 +1,29 @@
 import {addBook} from './addBook.js'
 import {storage, addItem} from './localStorage.js'
 
-
+localStorage.setItem('isAddBook', 'false')
 const contentBlock = document.getElementsByClassName('main-content-wrapper')[0].children
 const nameInput = document.getElementsByClassName('main-content-chooseName')[0].children[0]
 const subtitleTextArea = document.getElementsByClassName('main-content-enderSubtitle')[0].children[0]
 const ratingSelect = document.getElementById('rating')
-let isAddBook = false
-
 
 export function createNewBook() {
-  if (isAddBook) {
+  console.log(localStorage.getItem('isAddBook'))
+
+  if (localStorage.getItem('isAddBook') === 'true') {
+    localStorage.setItem('isAddBook', 'false')
     if (nameInput.value && subtitleTextArea.value) {
       addBook(nameInput.value, subtitleTextArea.value, ratingSelect.value)
       addItem(nameInput.value, subtitleTextArea.value, ratingSelect.value)
       localStorage.setItem('storage', JSON.stringify(storage))
     }
+  } else {
+    localStorage.setItem('isAddBook', 'true')
   }
-
-  isAddBook = !isAddBook
 
   for (const argument of contentBlock) {
-    argument.style.display = (argument.style.display === 'none' || this.style.display === 'block') ? 'block' : 'none'
+    argument.style.display = (argument.style.display === 'none') ? 'block' : 'none'
   }
 }
+
+document.getElementsByClassName('main-button')[0].addEventListener('click', createNewBook)
