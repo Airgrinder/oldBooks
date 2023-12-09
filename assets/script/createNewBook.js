@@ -8,8 +8,6 @@ const subtitleTextArea = document.getElementsByClassName('main-content-enderSubt
 const ratingSelect = document.getElementById('rating')
 
 export function createNewBook() {
-  console.log(localStorage.getItem('isAddBook'))
-
   if (localStorage.getItem('isAddBook') === 'true') {
     localStorage.setItem('isAddBook', 'false')
     if (nameInput.value && subtitleTextArea.value) {
@@ -26,4 +24,3 @@ export function createNewBook() {
   }
 }
 
-document.getElementsByClassName('main-button')[0].addEventListener('click', createNewBook)

@@ -6,13 +6,11 @@ const content = document.getElementsByClassName('main-content-wrapper')[0]
 const cover = document.getElementsByClassName('main-content-cover')[0]
 
 export function openBook(e) {
-  console.log(localStorage.getItem('isAddBook'))
   if (Object.keys(storage).length === 0) return cover.style = 'visibility:hidden'
   cover.style = 'visibility:show'
 
   if (localStorage.getItem('isAddBook') === 'true') {
     for (const argument of contentBlock) {
-      console.log(argument)
       argument.style.display = (argument.style.display === 'none') ? 'block' : 'none'
     }
   }
