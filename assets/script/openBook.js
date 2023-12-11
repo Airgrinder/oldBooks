@@ -3,18 +3,31 @@ import {storage} from "./localStorage.js"
 
 const contentBlock = document.getElementsByClassName('main-content-wrapper')[0].children
 const content = document.getElementsByClassName('main-content-wrapper')[0]
-const cover = document.getElementsByClassName('main-content-cover')[0]
+const cover = document.getElementsByClassName('main-content-cover-wrapper')[0]
+const button = document.getElementsByClassName('main-button')[0]
+const edit = document.getElementsByClassName('main-content-edit')[0]
 
 export function openBook(e) {
-  if (Object.keys(storage).length === 0) return cover.style = 'visibility:hidden'
+  if (Object.keys(storage).length === 0) {
+    localStorage.setItem('current', '')
+    return cover.style = 'visibility:hidden'
+  } else {
+    localStorage.setItem('current', 'item0')
+  }
   cover.style = 'visibility:show'
 
-  if (localStorage.getItem('isAddBook') === 'true') {
+  if (e) localStorage.setItem('current', e.target.parentElement.parentElement.id)
+
+  if (localStorage.getItem('isAddBook') === 'true' || localStorage.getItem('isEdit') === 'true') {
+    console.log('test')
     for (const argument of contentBlock) {
       argument.style.display = (argument.style.display === 'none') ? 'block' : 'none'
     }
+    edit.style.display = 'block'
+    button.style.display = 'block'
   }
   localStorage.setItem('isAddBook', 'false')
+  localStorage.setItem('isEdit', 'false')
 
   if (!e) {
     content.children[0].innerHTML = storage[0].bookName
@@ -25,6 +38,7 @@ export function openBook(e) {
   content.children[0].innerHTML = e.srcElement.parentElement.children[0].innerHTML
   content.children[2].innerHTML = e.srcElement.parentElement.children[2].innerHTML
   content.children[4].innerHTML = e.srcElement.parentElement.children[1].innerHTML
+
 }
 
 openBook()

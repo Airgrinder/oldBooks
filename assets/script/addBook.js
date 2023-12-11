@@ -1,10 +1,11 @@
 import {openBook} from "./openBook.js"
 
 
-export function addBook(name, subtitle, rating) {
+export function addBook(name, subtitle, rating, id) {
   const bookList = document.getElementsByClassName("main-sidemenu")[0]
   const newBook = document.createElement('div')
   newBook.className = 'main-sidemenu-item'
+  newBook.id = 'item' + id
 
   newBook.innerHTML = `
     <img class="main-sidemenu-item-cover" src="assets/img/pic2.svg" alt="">

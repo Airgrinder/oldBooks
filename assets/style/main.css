@@ -88,12 +88,25 @@
   display: flex;
 }
 
+.main-content-cover-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .main-content-cover {
   margin: 10px;
   width: 225px;
   height: 308px;
   background: bisque;
   border-radius: 50px;
+}
+
+.main-content-edit {
+  margin: auto 10px 10px;
+  height: 40px;
+  width: 200px;
+  font-size: 24px;
 }
 
 .main-content-wrapper {
