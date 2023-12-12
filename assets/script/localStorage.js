@@ -6,15 +6,19 @@ const subtitleTextArea = document.getElementsByClassName('main-content-enderSubt
 const ratingSelect = document.getElementById('rating')
 const contentBlock = document.getElementsByClassName('main-content-wrapper')[0].children
 const mainButton = document.getElementsByClassName('main-button')[0]
+const imgSelect = document.getElementsByClassName('main-content-coverSelect')[0].children[0]
 const nameInput = document.getElementsByClassName('main-content-chooseName')[0].children[0]
 const content = document.getElementsByClassName('main-content-wrapper')[0]
+const cover = document.getElementsByClassName('main-content-cover-wrapper')[0].children[0]
 
-export function addItem(bookName, description, rating, id) {
+
+export function addItem(bookName, description, rating, id, img) {
   storage[Object.keys(storage).length] = {
     bookName: bookName,
     description: description,
     rating: rating,
-    id: id
+    id: id,
+    img: img
   }
 }
 
@@ -27,18 +31,23 @@ export function editItem() {
     nameInput.value = target.children[0].innerText
     subtitleTextArea.value = target.children[1].innerText
     ratingSelect.selectedIndex = target.children[2].innerText.slice(0, 1) - 1
-    mainButton.style.display = 'none'
+    imgSelect.value = target.parentElement.children[0].src
+      mainButton.style.display = 'none'
   } else {
     localStorage.setItem('isEdit', 'false')
     target.children[0].innerText = nameInput.value
     target.children[1].innerText = subtitleTextArea.value
     target.children[2].innerText = ratingSelect.value + ' из 10'
+    target.parentElement.children[0].src = imgSelect.value
     storage[localStorage.getItem('current').slice(4)].bookName = nameInput.value
     storage[localStorage.getItem('current').slice(4)].description = subtitleTextArea.value
     storage[localStorage.getItem('current').slice(4)].rating = ratingSelect.value
+    storage[localStorage.getItem('current').slice(4)].img = imgSelect.value
     content.children[0].innerHTML = nameInput.value
     content.children[2].innerHTML = ratingSelect.value + ' из 10'
     content.children[4].innerHTML = subtitleTextArea.value
+    cover.src = imgSelect.value
+    imgSelect.value = ''
     nameInput.value = ''
     subtitleTextArea.value = ''
     ratingSelect.selectedIndex = 0
@@ -52,5 +61,5 @@ export function editItem() {
 }
 
 for (const key in storage) {
-  addBook(storage[key].bookName, storage[key].description, storage[key].rating, storage[key].id)
+  addBook(storage[key].bookName, storage[key].description, storage[key].rating, storage[key].id, storage[key].img)
 }

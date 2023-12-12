@@ -130,6 +130,12 @@
 
 .main-content-enderSubtitle textarea {
   margin-top: 20px;
-  width: 380px;
+  width: 382px;
   font-size: 20px;
+}
+
+.main-content-coverSelect input {
+  height: 30px;
+  width: 380px;
+  font-size: 22px;
 }
