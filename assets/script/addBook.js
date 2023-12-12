@@ -17,7 +17,7 @@ export function addBook(name, subtitle, rating, id) {
     </div>
   `
 
-  newBook.addEventListener('click', (event) => {
+  newBook.children[1].children[3].addEventListener('click', (event) => {
     openBook(event)
   })
 
