@@ -1,6 +1,8 @@
 import {createNewBook} from './assets/script/createNewBook.js'
 import {openBook} from './assets/script/openBook.js'
-import {editItem} from './assets/script/localStorage.js'
+import {editItem} from './assets/script/editBook.js'
+import {storage} from './assets/script/localStorage.js'
+import {addBook} from './assets/script/addBook.js'
 
 
 const openButton = document.getElementsByClassName('main-sidemenu-item-button')
@@ -14,3 +16,6 @@ for (const element of openButton) {
   })
 }
 
+for (const key in storage) {
+  addBook(storage[key].bookName, storage[key].description, storage[key].rating, storage[key].id, storage[key].img)
+}
